@@ -1,16 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+  <% content_for :title, "Movies" %>
+  <h1>Movies</h1>
+  <table>
+    <thead>
+      <tr>
+        <th><%= sortable "title", "Movie Title" %></th>
+        <th><%= sortable "rating" %></th>
+        <th><%= sortable "release_date", "Release Date" %></th>
+        <th>More Info</th>
+      </tr>
+    </thead>
 
-<% content_for :title, "Movies" %>
-
-<h1>Movies</h1>
-
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= movie.title %></td>
+          <td><%= movie.rating %></td>
+          <td><%= l(movie.release_date, format: :long) if movie.release_date.present? %></td>
+          <td><%= link_to "More Info", movie_path(movie) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to "New movie", new_movie_path %>
 </div>
-
-<%= link_to "New movie", new_movie_path %>

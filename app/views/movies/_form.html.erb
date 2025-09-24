@@ -18,7 +18,7 @@
 
   <div>
     <%= form.label :rating, style: "display: block" %>
-    <%= form.text_field :rating %>
+    <%= form.select :rating, Movie.all_ratings %>
   </div>
 
   <div>
@@ -32,6 +32,6 @@
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn" %>
   </div>
 <% end %>

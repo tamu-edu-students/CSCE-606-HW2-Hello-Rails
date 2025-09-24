@@ -1,10 +1,20 @@
+<div class="container">
 <p style="color: green"><%= notice %></p>
-
-<%= render @movie %>
-
-<div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", movies_path %>
-
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
+<h1><%= @movie.title %></h1>
+  
+  <ul class="movie-details">
+    <li>
+      <strong>Rating:</strong>
+      <%= @movie.rating %>
+    </li>
+    <li>
+      <strong>Released:</strong>
+      <%= l(@movie.release_date) if @movie.release_date %>
+    </li>
+  </ul>
+  
+  <br>
+  
+  <%= link_to "Edit this movie", edit_movie_path(@movie), class: "btn" %>
+  <%= link_to "Back to movies", root_path, class: "btn btn-secondary" %>
 </div>

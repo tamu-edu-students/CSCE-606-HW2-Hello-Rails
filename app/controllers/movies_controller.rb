@@ -1,13 +1,17 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
+  helper_method :sort_column, :sort_direction
 
   # GET /movies or /movies.json
   def index
-    @movies = Movie.all
-  end
-
-  # GET /movies/1 or /movies/1.json
-  def show
+    if params[:sort]
+      session[:sort] = params[:sort]
+    end
+    if params[:direction]
+      session[:direction] = params[:direction]
+    end
+    
+    @movies = Movie.order("#{sort_column} #{sort_direction}")
   end
 
   # GET /movies/new
@@ -52,7 +56,7 @@ class MoviesController < ApplicationController
     @movie.destroy!
 
     respond_to do |format|
-      format.html { redirect_to movies_path, notice: "Movie was successfully destroyed.", status: :see_other }
+      format.html { redirect_to root_path, notice: "Movie was successfully destroyed.", status: :see_other }
       format.json { head :no_content }
     end
   end
@@ -67,4 +71,16 @@ class MoviesController < ApplicationController
     def movie_params
       params.expect(movie: [ :title, :rating, :description, :release_date ])
     end
+
+    def sortable_columns
+      ["title", "rating", "release_date"]
+    end
+
+    def sort_column
+    sortable_columns.include?(params[:sort]) ? params[:sort] : session[:sort] || "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : session[:direction] || "asc"
+  end
 end
