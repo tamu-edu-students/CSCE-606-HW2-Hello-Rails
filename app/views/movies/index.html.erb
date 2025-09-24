@@ -5,24 +5,49 @@
   <table>
     <thead>
       <tr>
-        <th><%= sortable "title", "Movie Title" %></th>
-        <th><%= sortable "rating" %></th>
-        <th><%= sortable "release_date", "Release Date" %></th>
-        <th>More Info</th>
+        <th class="<%= sorted_column_class('title') %>">
+          <%= sortable "title", "Movie Title" %>
+        </th>
+        <th class="<%= sorted_column_class('rating') %>">
+          <%= sortable "rating" %>
+        </th>
+        <th class="<%= sorted_column_class('release_date') %>">
+          <%= sortable "release_date", "Release Date" %>
+        </th>
+        <th>
+          More Info
+        </th>
       </tr>
     </thead>
 
     <tbody>
       <% @movies.each do |movie| %>
         <tr>
-          <td><%= movie.title %></td>
-          <td><%= movie.rating %></td>
-          <td><%= l(movie.release_date, format: :long) if movie.release_date.present? %></td>
-          <td><%= link_to "More Info", movie_path(movie) %></td>
+          <td class="<%= sorted_column_class('title') %>">
+            <%= movie.title %>
+          </td>
+          <td class="<%= sorted_column_class('rating') %>">
+            <%= movie.rating %>
+          </td>
+          <td class="<%= sorted_column_class('release_date') %>">
+            <%= l(movie.release_date, format: :long) if movie.release_date %>
+          </td>
+          <td>
+            <%= link_to "More Info", movie_path(movie) %>
+          </td>
         </tr>
       <% end %>
     </tbody>
+
+    <tfoot>
+      <tr>
+        <td colspan="4">
+          <%= paginate @movies %>
+        </td>
+      </tr>
+    </tfoot>
   </table>
+
   <br>
-  <%= link_to "New movie", new_movie_path %>
+  <%= link_to "New Movie", new_movie_path %>
 </div>

@@ -57,12 +57,12 @@ th a:hover {
   text-decoration: underline;
 }
 
-.sorted-by.asc {
+.sorted-asc {
   background-color: #d4efdf; /* Light green for ascending */
 }
 
-.sorted-by.desc {
-  background-color: #f5b7b1; /* Light red for descending */
+.sorted-desc {
+  background-color: #fcf3cf; /* Light yellow for descending */
 }
 
 .sort-arrow {
@@ -105,21 +105,34 @@ th a:hover {
   box-sizing: border-box;
 }
 
+.button-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
 .btn {
   display: inline-block;
   padding: 10px 20px;
+  border: 1px solid transparent;
   border-radius: 5px;
-  text-decoration: none;
-  color: #fff;
-  background-color: #3498db;
-  border: none;
-  cursor: pointer;
-}
 
-.btn-secondary {
-  background-color: #7f8c8d;
+  color: #fff;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  text-align: center;
+
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+
+  background-color: #3498db;
 }
 
 .btn:hover {
-  opacity: 0.9;
+  opacity: 0.85;
+}
+
+.btn-danger {
+  background-color: #f37b6e;
 }

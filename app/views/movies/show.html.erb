@@ -11,10 +11,22 @@
       <strong>Released:</strong>
       <%= l(@movie.release_date) if @movie.release_date %>
     </li>
+    <li>
+      <strong>Description:</strong>
+      <%= @movie.description %>
+    </li>
   </ul>
   
   <br>
   
-  <%= link_to "Edit this movie", edit_movie_path(@movie), class: "btn" %>
-  <%= link_to "Back to movies", root_path, class: "btn btn-secondary" %>
+  <div class="button-group">
+    <%= link_to "Edit this movie", edit_movie_path(@movie), class: "btn" %>
+
+    <%= button_to "Delete", @movie,
+          method: :delete,
+          class: "btn btn-danger",
+          form: { data: { turbo_confirm: "Are you sure?" } } %>
+
+    <%= link_to "Back to movies", root_path, class: "btn" %>
+  </div>
 </div>

@@ -8,4 +8,8 @@ module MoviesHelper
     
     link_to link_text, { sort: column, direction: direction }, { class: css_class }
   end
+
+  def sorted_column_class(column)
+    "sorted-#{sort_direction}" if column == sort_column
+  end
 end

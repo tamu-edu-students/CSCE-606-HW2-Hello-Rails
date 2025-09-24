@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
       session[:direction] = params[:direction]
     end
     
-    @movies = Movie.order("#{sort_column} #{sort_direction}")
+    @movies = Movie.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
   # GET /movies/new
@@ -56,7 +56,7 @@ class MoviesController < ApplicationController
     @movie.destroy!
 
     respond_to do |format|
-      format.html { redirect_to root_path, notice: "Movie was successfully destroyed.", status: :see_other }
+      format.html { redirect_to root_path, notice: "Movie was successfully deleted.", status: :see_other }
       format.json { head :no_content }
     end
   end

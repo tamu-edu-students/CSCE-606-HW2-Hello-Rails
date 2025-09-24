@@ -20,7 +20,15 @@ more_movies = [
   { title: 'Jumanji', rating: 'PG', release_date: '15-Dec-1995' },
   { title: 'Iron Man', rating: 'PG-13', release_date: '02-May-2008' },
   { title: 'Marvel\'s The Avengers', rating: 'PG-13', release_date: '04-May-2012' },
-  { title: 'Ford v Ferrari', rating: 'PG-13', release_date: '15-Nov-2019' }
+  { title: 'Ford v Ferrari', rating: 'PG-13', release_date: '15-Nov-2019' },
+  { title: 'Mrs. Doubtfire', rating: 'PG-13', release_date: '24-Nov-1993' },
+  { title: 'The Help', rating: 'PG-13', release_date: '10-Aug-2011' },
+  { title: 'Jumanji', rating: 'PG-13', release_date: '15-Dec-1995' },
+  { title: 'Trial of the Chicago 7', rating: 'R', release_date: '25-Sep-2020' },
+  { title: 'A Few Good Men', rating: 'R', release_date: '11-Jul-1992' },
+  { title: 'My Cousin Vinny', rating: 'PG-13', release_date: '13-Aug-1992' },
+  { title: 'Up', rating: 'PG', release_date: '29-May-2009' },
+  { title: 'WALL-E', rating: 'G', release_date: '27-Jun-2008' }
 ]
 
 more_movies.each do |movie_attributes|
