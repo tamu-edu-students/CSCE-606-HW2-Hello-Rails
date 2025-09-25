@@ -64,12 +64,12 @@ class MoviesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movie
-      @movie = Movie.find(params.expect(:id))
+      @movie = Movie.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.expect(movie: [ :title, :rating, :description, :release_date ])
+      params.require(:movie).permit(:title, :rating, :description, :release_date)
     end
 
     def sortable_columns
@@ -77,8 +77,8 @@ class MoviesController < ApplicationController
     end
 
     def sort_column
-    sortable_columns.include?(params[:sort]) ? params[:sort] : session[:sort] || "title"
-  end
+      sortable_columns.include?(params[:sort]) ? params[:sort] : session[:sort] || "title"
+    end
 
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : session[:direction] || "asc"
