@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the HW2 submission by Shreya Sahni (UIN 737002482) for CSCE 606 Software Engineering course in Fall 2025.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Heroku link of the deployed application - https://csce-606-hw2-hello-rails-01ef9c47a9bf.herokuapp.com/

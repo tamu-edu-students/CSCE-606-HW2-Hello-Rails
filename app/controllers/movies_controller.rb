@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     if params[:direction]
       session[:direction] = params[:direction]
     end
-    
+
     @movies = Movie.order("#{sort_column} #{sort_direction}").page(params[:page]).per(10)
   end
 
@@ -73,7 +73,7 @@ class MoviesController < ApplicationController
     end
 
     def sortable_columns
-      ["title", "rating", "release_date"]
+      [ "title", "rating", "release_date" ]
     end
 
     def sort_column
